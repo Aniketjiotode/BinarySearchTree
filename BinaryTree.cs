@@ -83,7 +83,19 @@ namespace BinarySearchTree
                 t = t.Next;
             }
             return s;
-        } 
+        }
+        public int Size()
+        {
+            if (head == null)
+                return 0;
+            Node t = head; int count = 0;
+            while (t != null)
+            {
+                count++;
+                t = t.Next;
+            }
+            return count;
+        }
     }
 }
 

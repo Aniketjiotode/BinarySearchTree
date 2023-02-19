@@ -10,6 +10,7 @@ namespace BinarySearchTree
             bt.Push(56);
             bt.Push(30);
             bt.Push(76);
+            Console.WriteLine(bt.Size());
         }
     }
 }
