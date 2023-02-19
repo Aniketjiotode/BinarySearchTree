@@ -6,7 +6,10 @@ namespace BinarySearchTree
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            BinaryTree<int> bt = new BinaryTree<int>();
+            bt.Push(56);
+            bt.Push(30);
+            bt.Push(76);
         }
     }
 }
