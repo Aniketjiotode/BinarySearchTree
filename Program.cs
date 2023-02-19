@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace BinarySearchTree
+
 {
     internal class Program
     {
@@ -11,6 +12,7 @@ namespace BinarySearchTree
             bt.Push(30);
             bt.Push(76);
             Console.WriteLine(bt.Size());
+            Console.WriteLine(bt.Search(30));
         }
     }
 }

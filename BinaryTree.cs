@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace BinarySearchTree
-
-
 {
     internal class BinaryTree<T> where T: IComparable
     {
@@ -79,11 +77,24 @@ namespace BinarySearchTree
             string s = "";
             while (t != null)
             {
-                s = s + t.data + " ";
+                s = s + t.data;
                 t = t.Next;
             }
             return s;
-        }
+        }       
+            public bool Search(T data)
+            {
+                if (head == null)
+                    throw new NullReferenceException("empty List");
+                Node t = head;
+                while (t != null)
+                {
+                    if (t.data.Equals(data))
+                        return true;
+                    t = t.Next;
+                }
+                return false;
+            }      
         public int Size()
         {
             if (head == null)
