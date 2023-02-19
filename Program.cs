@@ -12,7 +12,7 @@ namespace BinarySearchTree
             bt.Push(30);
             bt.Push(76);
             Console.WriteLine(bt.Size());
-            Console.WriteLine(bt.Search(30));
+            Console.WriteLine(bt.Search(80));
         }
     }
 }

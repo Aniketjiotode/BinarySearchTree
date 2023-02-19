@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace BinarySearchTree
 {
-    internal class BinaryTree<T> where T: IComparable
+    internal class BinaryTree<T> where T : IComparable
     {
         private Node head;
+        public T[] arr;
+
         public class Node
         {
             public T data;
@@ -17,11 +20,12 @@ namespace BinarySearchTree
             }
             public int CompareTo(Node compare)
             {
-                return this.data.CompareTo(compare.data);                 
+                return this.data.CompareTo(compare.data);
             }
         }
         public void Push(T data)
         {
+
             Node n = new Node(data);
             if (head == null)
             {
@@ -33,7 +37,7 @@ namespace BinarySearchTree
             {
                 if (head.Next == null)
                 {
-                    if (head.CompareTo(n)==1)
+                    if (head.CompareTo(n) == 1)
                     {
                         n.Next = head;
                         head = n;
@@ -45,18 +49,18 @@ namespace BinarySearchTree
                         return;
                     }
                 }
-                if (p != null && p.CompareTo(n)==1)
+                if (p != null && p.CompareTo(n) == 1)
                 {
                     n.Next = p;
                     head = n;
                     return;
                 }
-                if (t.Next == null && n.CompareTo(t)==1)
+                if (t.Next == null && n.CompareTo(t) == 1)
                 {
                     t.Next = n;
                     return;
                 }
-                if (p != null && p.CompareTo(n)==-1 && t.CompareTo(n)==1)
+                if (p != null && p.CompareTo(n) == -1 && t.CompareTo(n) == 1)
                 {
                     n.Next = p.Next;
                     p.Next = n;
@@ -67,35 +71,45 @@ namespace BinarySearchTree
             }
             return;
         }
-        public override string ToString()
+        public T[] datalist()
         {
             if (head == null)
             {
                 return null;
             }
             Node t = head;
-            string s = "";
-            while (t != null)
-            {
-                s = s + t.data;
+            arr= new T[Size()];
+            
+            for (int i=0; t != null; i++)
+            {          
+                arr[i] = t.data;
                 t = t.Next;
             }
-            return s;
-        }       
-            public bool Search(T data)
+            return arr;
+        }
+        public bool Search(T data)
+        {
+            T[] arr = datalist();
+
+            int l = 0, h = Size() - 1;
+            while (l <= h)
             {
-                if (head == null)
-                    throw new NullReferenceException("empty List");
-                Node t = head;
-                while (t != null)
-                {
-                    if (t.data.Equals(data))
-                        return true;
-                    t = t.Next;
-                }
-                return false;
-            }      
-        public int Size()
+                int m = l + (h - l) / 2;
+
+                int res = data.CompareTo(arr[m]);
+
+                if (res == 0)
+                    return true;
+
+                if (res > 0)
+                    l = m + 1;
+
+                else
+                    h = m - 1;
+            }
+            return false;
+        }
+         public int Size()
         {
             if (head == null)
                 return 0;
